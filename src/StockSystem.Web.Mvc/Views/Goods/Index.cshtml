@@ -1,0 +1,54 @@
+﻿@using StockSystem.StockSystem.Goods.Dtos;
+@using Abp.Application.Services.Dto;
+@using StockSystem.Web.Startup;
+@model PagedResultDto<GoodsListDto>;
+
+@{
+    //ViewBag.CurrentPageName = PageNames.Users;
+}
+
+
+@section scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Goods/Index.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<div id="toolbar">
+    <a href="#" id="btn-add-goods" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加货物</a>
+    <a href="#" id="btn-edit-goods" class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑货物</a>
+    <a href="#" id="btn-delete-goods" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除货物</a>
+</div>
+<!-- datagrid数据表格 -->
+<table id="goods-index-main-grid"></table>
+
+<!-- 添加货物弹出对话框 -->
+<div id="goods-index-dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons">
+    <div class="ftitle">货物信息</div>
+    <form id="goods-fm" method="post">
+        <div>
+            <input type="hidden" name="id" />
+        </div>
+        <div class="fitem">
+            <label>货物名称:</label>
+            <input name="goodsName" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>生成厂家:</label>
+            <input name="goodsManufacturer" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>生产日期:</label>
+            <input name="goodsProuductionDate" class="easyui-validatebox" type="date" required="true">
+        </div>
+        <div class="fitem">
+            <label>规格型号:</label>
+            <input name="goodsModel" class="easyui-validatebox">
+        </div>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" id="btn-save-goods" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#goods-index-dlg').dialog('close')">取消</a>
+</div>

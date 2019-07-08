@@ -50,6 +50,7 @@
         <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/jquery-easyui-1.8.1/themes/default/easyui.css" type="text/css" rel="stylesheet" />
+        <link href="~/lib/jquery-easyui-1.8.1/themes/icon.css" type="text/css" rel="stylesheet" />
         
 </environment>
 
@@ -119,14 +120,14 @@
                     <li data-options="state:'closed'">
                         <span>用户/角色管理</span>
                         <ul>
-                            <li><a href="/Users">@L("Users")</a></li>
-                            <li><a href="/Roles">@L("Roles")</a></li>
+                            <li><a asp-controller="Users" asp-action="Index">@L("Users")</a></li>
+                            <li><a asp-controller="Roles" asp-action="Index">@L("Roles")</a></li>
                         </ul>
                     </li>
                     <li>
                         <span>进驻销管理</span>
                         <ul>
-                            <li><a>货物管理</a></li>
+                            <li><a asp-controller="Goods" asp-action="Index">货物管理</a></li>
                             <li><a>供应商管理</a></li>
                             <li><a>客户管理</a></li>
                             <li><a>库存</a></li>
@@ -198,6 +199,8 @@
         }
         <!--引入easyui-->
         <script src="~/lib/jquery-easyui-1.8.1/jquery.easyui.min.js" asp-append-version="true"></script>
+        <!-- 引入datagrid扩展 -->
+        <script src="~/lib/jquery-easyui-1.8.1/datagrid-pagerplus.js" asp-append-version="true"></script>
     </environment>
 
     <environment names="Staging,Production">
