@@ -25,6 +25,5 @@
   <ItemGroup>
     <Folder Include="StockSystem\Stockings\" />
     <Folder Include="StockSystem\Customers\" />
-    <Folder Include="StockSystem\Suppliers\" />
   </ItemGroup>
 </Project>

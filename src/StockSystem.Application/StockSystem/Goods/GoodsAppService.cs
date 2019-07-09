@@ -72,7 +72,7 @@ namespace StockSystem.StockSystem.Goods
 
         protected async Task UpdateGoodsAsync(GoodsEditDto input)
         {
-            Goods entity = _goodsRepository.Get(input.Id.Value);
+            Goods entity = await _goodsRepository.GetAsync(input.Id.Value);
             
             await _goodsRepository.UpdateAsync(input.MapTo(entity));
         }
