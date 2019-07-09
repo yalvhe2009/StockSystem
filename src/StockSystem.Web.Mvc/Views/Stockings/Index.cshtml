@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "库存";
+}
+
+
+
+@using StockSystem.StockSystem.Goods.Dtos;
+@using Abp.Application.Services.Dto;
+@using StockSystem.Web.Startup;
+@model PagedResultDto<GoodsListDto>;
+
+@{
+    //ViewBag.CurrentPageName = PageNames.Users;
+}
+
+
+@section scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Stockings/Index.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<!-- datagrid数据表格 -->
+<table id="stockings-index-main-grid"></table>
+

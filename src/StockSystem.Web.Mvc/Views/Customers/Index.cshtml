@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "客户";
+}
+
+
+@section scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Customers/Index.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<div id="toolbar">
+    <a href="#" id="btn-add-customer" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加客户</a>
+    <a href="#" id="btn-edit-customer" class="easyui-linkbutton" iconCls="icon-edit" plain="true">编辑客户</a>
+    <a href="#" id="btn-delete-customer" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除客户</a>
+</div>
+<!-- datagrid数据表格 -->
+<table id="customer-index-main-grid"></table>
+
+<!-- 添加客户弹出对话框 -->
+<div id="customer-index-dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons">
+    <div class="ftitle">客户信息</div>
+    <form id="customer-fm" method="post">
+        <div>
+            <input type="hidden" name="id" />
+        </div>
+        <div class="fitem">
+            <label>客户名称:</label>
+            <input name="customerName" class="easyui-validatebox" required="true">
+        </div>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" id="btn-save-customer" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#customer-index-dlg').dialog('close')">取消</a>
+</div>
+
+

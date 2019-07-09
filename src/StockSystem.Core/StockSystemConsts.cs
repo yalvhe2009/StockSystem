@@ -15,5 +15,7 @@
         public const int MaxGoodsModelLength = 80;//货物规格型号最大长度
 
         public const int MaxSupplierNameLength = 100;//货物规格型号最大长度
+
+        public const int MaxCustomerNameLength = 100;//客户名称最大长度
     }
 }
