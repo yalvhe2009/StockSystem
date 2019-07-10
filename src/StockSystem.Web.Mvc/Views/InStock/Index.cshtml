@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "入库";
+}
+
+
+@section scripts{
+    <environment names="Development">
+        <script src="~/view-resources/Views/InStock/Index.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<style>
+    #in-stock-fm td {
+        padding: 10px;
+    }
+</style>
+
+<div id="toolbar">
+    <a href="#" id="btn-new-in-stock" class="easyui-linkbutton" iconCls="icon-add" plain="true">新建入库单</a>
+</div>
+<!-- datagrid数据表格 -->
+<table id="in-stock-index-main-grid"></table>
+
+<!-- 添加货物弹出对话框 -->
+<div id="in-stock-index-dlg" class="easyui-dialog" style="width:960px;height:480px;padding:10px 20px"
+     closed="true" buttons="#dlg-buttons">
+    <div class="ftitle">货物信息</div>
+    <form id="in-stock-fm" method="post">
+        <div>
+            <input type="hidden" name="id" />
+        </div>
+        <table border="0">
+            <tr>
+                <td>
+                    <div class="fitem">
+                        <label>入库单号:</label>
+                        <input name="inStockNumber" class="easyui-textbox easyui-validatebox" required="true">
+
+                    </div>
+                </td>
+                <td>
+                    <div class="fitem">
+                        <label>供应商:　</label>
+                        <input id="supplier" name="supplier" required="true">
+                        
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <div class="fitem">
+                        <label>操作人:　</label>
+                        <input name="user" class="easyui-validatebox" required="true">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="fitem">
+                        <label>操作时间:</label>
+                        <input name="operatingTime" class="easyui-validatebox" type="date" required="true">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="fitem">
+                        <label>总金额:　</label>
+                        <input name="totalAmount" class="easyui-validatebox" type="number" required="true">
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div id="sub-toolbar">
+            <a href="#" id="btn-append-goods-in-stock" class="easyui-linkbutton" iconCls="icon-add" plain="true">追加货物</a>
+            <a href="#" id="btn-del-goods-in-stock" class="easyui-linkbutton" iconCls="icon-add" plain="true">删除货物</a>
+        </div>
+
+        <!-- datagrid数据表格 -->
+        <table id="in-stock-index-sub-grid"></table>
+    </form>
+</div>
+
+<div id="dlg-buttons">
+    <a href="#" id="btn-save-goods" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#in-stock-index-dlg').dialog('close')">取消</a>
+</div>
+
+
+<!-- 选择货物的对话框 -->
+<div id="in-stock-add-goods-dlg" class="easyui-dialog" style="width:800px;height:480px;padding:10px 20px"
+     closed="true" buttons="#dlg-append-goods-buttons">
+    <!-- datagrid数据表格 -->
+    <table id="in-stock-append-goods-grid"></table>
+</div>
+
+<div id="dlg-append-goods-buttons">
+    <a href="#" id="btn-save-goods-append" class="easyui-linkbutton" iconCls="icon-ok">保存追加</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#in-stock-add-goods-dlg').dialog('close')">取消</a>
+</div>

@@ -1094,6 +1094,52 @@ namespace StockSystem.Migrations
                     b.ToTable("SS_Goods");
                 });
 
+            modelBuilder.Entity("StockSystem.StockSystem.InStocks.InStockDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("GoodsId");
+
+                    b.Property<int>("InStockAmount");
+
+                    b.Property<decimal>("InStockPrice");
+
+                    b.Property<decimal>("InStockSumPrice");
+
+                    b.Property<int>("InStockSummaryId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GoodsId");
+
+                    b.HasIndex("InStockSummaryId");
+
+                    b.ToTable("SS_InStockDetail");
+                });
+
+            modelBuilder.Entity("StockSystem.StockSystem.InStocks.InStockSummary", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("OperatingTime");
+
+                    b.Property<int>("SupplierId");
+
+                    b.Property<decimal>("TotalAmount");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SupplierId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SS_InStockSummary");
+                });
+
             modelBuilder.Entity("StockSystem.StockSystem.Stockings.Stocking", b =>
                 {
                     b.Property<int>("Id")
@@ -1291,6 +1337,32 @@ namespace StockSystem.Migrations
                     b.HasOne("StockSystem.Authorization.Users.User", "LastModifierUser")
                         .WithMany()
                         .HasForeignKey("LastModifierUserId");
+                });
+
+            modelBuilder.Entity("StockSystem.StockSystem.InStocks.InStockDetail", b =>
+                {
+                    b.HasOne("StockSystem.StockSystem.Goods.Goods", "Goods")
+                        .WithMany()
+                        .HasForeignKey("GoodsId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("StockSystem.StockSystem.InStocks.InStockSummary", "InStockSummary")
+                        .WithMany()
+                        .HasForeignKey("InStockSummaryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("StockSystem.StockSystem.InStocks.InStockSummary", b =>
+                {
+                    b.HasOne("StockSystem.StockSystem.Suppliers.Supplier", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("StockSystem.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("StockSystem.StockSystem.Stockings.Stocking", b =>

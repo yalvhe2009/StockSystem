@@ -7,6 +7,7 @@ using StockSystem.StockSystem.Goods;
 using StockSystem.StockSystem.Suppliers;
 using StockSystem.StockSystem.Customers;
 using StockSystem.StockSystem.Stockings;
+using StockSystem.StockSystem.InStocks;
 
 namespace StockSystem.EntityFrameworkCore
 {
@@ -24,6 +25,8 @@ namespace StockSystem.EntityFrameworkCore
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Stocking> Stocking { get; set; }
+        public DbSet<InStockDetail> InStockDetail { get; set; }
+        public DbSet<InStockSummary> InStockSummary { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +34,8 @@ namespace StockSystem.EntityFrameworkCore
             modelBuilder.Entity<Supplier>().ToTable("SS_Supplier");//改表名(SS is Stock System)
             modelBuilder.Entity<Customer>().ToTable("SS_Customer");//改表名(SS is Stock System)
             modelBuilder.Entity<Stocking>().ToTable("SS_Stocking");//改表名(SS is Stock System)
+            modelBuilder.Entity<InStockDetail>().ToTable("SS_InStockDetail");//改表名(SS is Stock System)
+            modelBuilder.Entity<InStockSummary>().ToTable("SS_InStockSummary");//改表名(SS is Stock System)
             base.OnModelCreating(modelBuilder);
         }
     }
