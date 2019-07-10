@@ -21,6 +21,7 @@ using StockSystem.Roles.Dto;
 using StockSystem.Users.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace StockSystem.Users
 {
@@ -219,6 +220,10 @@ namespace StockSystem.Users
             return true;
         }
 
+        public async Task<User> GetNowLoginUser()
+        {
+            return await _userManager.GetUserByIdAsync(AbpSession.UserId.Value);
+        }
     }
 }
 

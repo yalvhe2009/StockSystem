@@ -2,6 +2,7 @@
     $(function () {      
         var _inStockSummaryService = abp.services.app.inStockSummary;
         var _supplierService = abp.services.app.supplier;
+        var _userService = abp.services.app.user;
         var param = { 'maxResultCount': 500, 'skipCount': 0, 'sorting': 'id' };
 
         
@@ -52,6 +53,13 @@
                     textField: 'supplierName'
                 });
             });
+            //获取当前登录用户并展示到页面中
+            _userService.getNowLoginUser().done(function (d) {
+                console.log(d)
+                $("#op_user").val(d.surname+d.name+" ("+d.userName+")");
+                $("#op_user_id").val(d.id);
+            });
+            
             
             $("#in-stock-index-sub-grid").datagrid({
                 data: goodsList,
