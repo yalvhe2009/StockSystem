@@ -1,7 +1,7 @@
 ﻿(function () {
     $(function () {
         var _inStockSummaryService = abp.services.app.inStockSummary;
-        var _inStockDetailService = abp.services.app.inStockDetail;
+        //var _inStockDetailService = abp.services.app.inStockDetail;
         var _supplierService = abp.services.app.supplier;
         var _userService = abp.services.app.user;
         var param = { 'maxResultCount': 500, 'skipCount': 0, 'sorting': 'id' };
@@ -34,7 +34,7 @@
                 { field: 'totalAmount', title: '总金额', width: 120},
             ]],
             onDblClickRow: function (rowIndex, rowData) {
-                alert("双机了某行条目");
+                //alert("双机了某行条目");
                 console.log(_inStockDetailService.getInStockDetailsByInStockSummaryId(1));
             }
 
