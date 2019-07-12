@@ -1,4 +1,5 @@
-﻿using StockSystem.StockSystem.Goods;
+﻿using Abp.Application.Services.Dto;
+using StockSystem.StockSystem.Goods;
 using StockSystem.StockSystem.Stockings;
 using StockSystem.StockSystem.Stockings.Dtos;
 using System;
@@ -26,10 +27,14 @@ namespace StockSystem.Tests.Stockings
                    context.Goods.Add(goods);
                });
 
-           //Goods goods = new Goods { Id=11, GoodsName="水杯", GoodsManufacturer="as", GoodsModel="wu", GoodsProuductionDate=new DateTime()};           
+           
            StockingEditDto dto = new StockingEditDto { Id = 1, StockingNumber = 21, Goods = goods};
            // // Act
            _stockingAppService.CreateOrUpdateStockingAsync(new CreateOrUpdateStockingInput { StockingEditDto=dto});
+
+            //var res = _stockingAppService.GetStockingByIdAsync(1);
+
+
 
             Assert.True(true);
           

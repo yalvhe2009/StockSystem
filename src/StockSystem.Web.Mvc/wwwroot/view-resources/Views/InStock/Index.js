@@ -1,6 +1,7 @@
 ﻿(function () {
     $(function () {
         var _inStockSummaryService = abp.services.app.inStockSummary;
+        var _inStockDetailService = abp.services.app.inStockDetail;
         var _supplierService = abp.services.app.supplier;
         var _userService = abp.services.app.user;
         var param = { 'maxResultCount': 500, 'skipCount': 0, 'sorting': 'id' };
@@ -22,7 +23,8 @@
             toolbar: '#toolbar',
             singleSelect: true,
             frozenColumns: [[
-                { field: 'inStockCode', title: '入库单号', width: 80 }
+                { field: 'inStockCode', title: '入库单号', width: 80 },
+                { field: 'id', title: '抬头id', width: 80, hidden: true}
                 
             ]],
             columns: [[                
@@ -30,7 +32,13 @@
                 { field: 'operatingUser', title: '操作人', width: 120},
                 { field: 'operatingTime', title: '操作时间', width: 120 },
                 { field: 'totalAmount', title: '总金额', width: 120},
-            ]]
+            ]],
+            onDblClickRow: function (rowIndex, rowData) {
+                alert("双机了某行条目");
+                console.log(_inStockDetailService.getInStockDetailsByInStockSummaryId(1));
+            }
+
+
         });
         var lastRowIndex = -1;
         var goodsList = [];

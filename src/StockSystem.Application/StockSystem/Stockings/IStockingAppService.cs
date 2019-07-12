@@ -39,6 +39,5 @@ namespace StockSystem.StockSystem.Stockings
 
         //查询库存（by id）
         Task<StockingListDto> GetStockingByIdAsync(NullableIdDto<int> input);
-
     }
 }

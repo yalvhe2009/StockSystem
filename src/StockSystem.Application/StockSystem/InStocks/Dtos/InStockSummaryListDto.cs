@@ -10,6 +10,7 @@ namespace StockSystem.StockSystem.InStocks.Dtos
     [AutoMapFrom(typeof(InStockSummary))]
     public class InStockSummaryListDto
     {
+        public int? Id { get; set; }
 
         //入库单号
         public string InStockCode { get; set; }
