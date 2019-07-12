@@ -1123,19 +1123,21 @@ namespace StockSystem.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("InStockCode")
+                        .IsRequired();
+
                     b.Property<DateTime>("OperatingTime");
+
+                    b.Property<string>("OperatingUser")
+                        .IsRequired();
 
                     b.Property<int>("SupplierId");
 
                     b.Property<decimal>("TotalAmount");
 
-                    b.Property<long>("UserId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("SupplierId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("SS_InStockSummary");
                 });
@@ -1346,8 +1348,8 @@ namespace StockSystem.Migrations
                         .HasForeignKey("GoodsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("StockSystem.StockSystem.InStocks.InStockSummary", "InStockSummary")
-                        .WithMany()
+                    b.HasOne("StockSystem.StockSystem.InStocks.InStockSummary")
+                        .WithMany("InStockDetails")
                         .HasForeignKey("InStockSummaryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -1357,11 +1359,6 @@ namespace StockSystem.Migrations
                     b.HasOne("StockSystem.StockSystem.Suppliers.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("StockSystem.Authorization.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

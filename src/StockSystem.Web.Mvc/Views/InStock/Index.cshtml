@@ -35,14 +35,14 @@
                 <td>
                     <div class="fitem">
                         <label>入库单号:</label>
-                        <input name="inStockNumber" class="easyui-textbox easyui-validatebox" required="true">
+                        <input name="inStockCode" class="easyui-textbox easyui-validatebox" required="true">
 
                     </div>
                 </td>
                 <td>
                     <div class="fitem">
                         <label>供应商:　</label>
-                        <input id="supplier" name="supplier" required="true">
+                        <input id="supplier" name="supplierId" required="true">
                         
                     </div>
                 </td>
@@ -53,7 +53,7 @@
                     <div class="fitem">
                         <label>操作人:　</label>
                         <input type="hidden" id="op_user_id" name="user">
-                        <input id="op_user" name="user_name" disabled class="easyui-validatebox" required="true">
+                        <input id="op_user" name="operatingUser" disabled class="easyui-validatebox" required="true">
                     </div>
                 </td>
 
@@ -68,7 +68,7 @@
                 <td colspan="2">
                     <div class="fitem">
                         <label>总金额:　</label>
-                        <input name="totalAmount" class="easyui-validatebox" type="number" required="true">
+                        <input id="totalAmount" name="totalAmount" class="easyui-validatebox" type="number" disabled>
                     </div>
                 </td>
             </tr>
@@ -85,7 +85,8 @@
 </div>
 
 <div id="dlg-buttons">
-    <a href="#" id="btn-save-goods" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="#" id="btn-finish-edit-in-stock" class="easyui-linkbutton" >完成编辑</a>
+    <a href="#" id="btn-submit-in-stock" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#in-stock-index-dlg').dialog('close')">取消</a>
 </div>
 

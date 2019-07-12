@@ -12,11 +12,14 @@ namespace StockSystem.StockSystem.InStocks
     {
         //所属于哪个InStockSummary。（即这条明细属于哪个出库订单）
         [Required]
-        public InStockSummary InStockSummary { get; set; }
+        public int InStockSummaryId { get; set; }//外键
 
         //这条明细的货物
         [Required]
-        public StockSystem.Goods.Goods Goods { get; set; }
+        public int GoodsId { get; set; }//外键
+        [Required]
+        public StockSystem.Goods.Goods Goods { get; set; }//导航
+
 
         //这种货物入库的数量
         [Required]

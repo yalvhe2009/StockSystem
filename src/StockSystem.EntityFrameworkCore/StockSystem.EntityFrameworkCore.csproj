@@ -12,6 +12,8 @@
     <Compile Remove="Migrations\20180927062408_test.cs" />
     <Compile Remove="Migrations\20190111071724_Upgraded_To_Abp_v4_1_0.cs" />
     <Compile Remove="Migrations\20190708033146_CreateGoods.cs" />
+    <Compile Remove="Migrations\20190711081240_test21.cs" />
+    <Compile Remove="Migrations\20190711081944_test1.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.1">

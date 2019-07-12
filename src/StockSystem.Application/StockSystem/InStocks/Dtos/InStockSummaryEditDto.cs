@@ -1,55 +1,36 @@
+﻿
 
+using Abp.AutoMapper;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Abp.Domain.Entities.Auditing;
-using StockSystem.Authorization.Users;
-using StockSystem.StockSystem.InStocks;
-using StockSystem.StockSystem.Suppliers;
 
-namespace  StockSystem.StockSystem.InStocks.Dtos
+namespace StockSystem.StockSystem.InStocks.Dtos
 {
+    [AutoMapTo(typeof(InStockSummary))]
     public class InStockSummaryEditDto
     {
+        //入库单号
+        [Required]
+        public string InStockCode { get; set; }
 
-        /// <summary>
-        /// Id
-        /// </summary>
-        public int? Id { get; set; }         
+        //供应商外键id
+        [Required]
+        public virtual int SupplierId { get; set; }
 
+        //操作人
+        [Required]
+        public string OperatingUser { get; set; }
 
-        
-		/// <summary>
-		/// InStockNumber
-		/// </summary>
-		[Required(ErrorMessage="InStockNumber不能为空")]
-		public string InStockNumber { get; set; }
+        //操作时间
+        [Required]
+        public DateTime OperatingTime { get; set; }
 
+        //入库总金额
+        [Required]
+        public Decimal TotalAmount { get; set; }
 
-
-		/// <summary>
-		/// Supplier
-		/// </summary>
-		[Required(ErrorMessage="Supplier不能为空")]
-		public Supplier Supplier { get; set; }
-
-
-
-		/// <summary>
-		/// User
-		/// </summary>
-		[Required(ErrorMessage="User不能为空")]
-		public User User { get; set; }
-
-
-
-		/// <summary>
-		/// OperatingTime
-		/// </summary>
-		[Required(ErrorMessage="OperatingTime不能为空")]
-		public DateTime OperatingTime { get; set; }
-
-
-
-
+        // 入库单明细
+        public List<InStockDetailEditDto> InStockDetails { get; set; }
     }
 }

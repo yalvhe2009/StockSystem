@@ -36,6 +36,16 @@ namespace StockSystem.EntityFrameworkCore
             modelBuilder.Entity<Stocking>().ToTable("SS_Stocking");//改表名(SS is Stock System)
             modelBuilder.Entity<InStockDetail>().ToTable("SS_InStockDetail");//改表名(SS is Stock System)
             modelBuilder.Entity<InStockSummary>().ToTable("SS_InStockSummary");//改表名(SS is Stock System)
+
+            /*
+            modelBuilder.Entity<Stocking>().HasOne(x => x.Goods).WithOne();
+
+            modelBuilder.Entity<InStockSummary>().HasMany(x => x.InStockDetails).WithOne().HasForeignKey(x => x.InStockSummaryId);
+            modelBuilder.Entity<InStockSummary>().HasOne(x => x.Supplier).WithMany().HasForeignKey(x => x.SupplierId);
+
+            //modelBuilder.Entity<InStockDetail>().HasOne(x => x.Goods).WithOne();
+            modelBuilder.Entity<InStockDetail>().HasOne(x => x.Goods).WithMany();
+            */
             base.OnModelCreating(modelBuilder);
         }
     }
